@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.appsys.dao.data_dictionaryMapper" >
+  <resultMap id="BaseResultMap" type="cn.appsys.pojo.data_dictionary" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="typeCode" property="typeCode" jdbcType="VARCHAR" />
+    <result column="typeName" property="typeName" jdbcType="VARCHAR" />
+    <result column="valueId" property="valueId" jdbcType="BIGINT" />
+    <result column="valueName" property="valueName" jdbcType="VARCHAR" />
+    <result column="createdBy" property="createdBy" jdbcType="BIGINT" />
+    <result column="creationDate" property="creationDate" jdbcType="TIMESTAMP" />
+    <result column="modifyBy" property="modifyBy" jdbcType="BIGINT" />
+    <result column="modifyDate" property="modifyDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, typeCode, typeName, valueId, valueName, createdBy, creationDate, modifyBy, modifyDate
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from data_dictionary
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from data_dictionary
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="cn.appsys.pojo.data_dictionary" >
+    insert into data_dictionary (id, typeCode, typeName, 
+      valueId, valueName, createdBy, 
+      creationDate, modifyBy, modifyDate
+      )
+    values (#{id,jdbcType=BIGINT}, #{typeCode,jdbcType=VARCHAR}, #{typeName,jdbcType=VARCHAR}, 
+      #{valueId,jdbcType=BIGINT}, #{valueName,jdbcType=VARCHAR}, #{createdBy,jdbcType=BIGINT}, 
+      #{creationDate,jdbcType=TIMESTAMP}, #{modifyBy,jdbcType=BIGINT}, #{modifyDate,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.appsys.pojo.data_dictionary" >
+    insert into data_dictionary
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="typeCode != null" >
+        typeCode,
+      </if>
+      <if test="typeName != null" >
+        typeName,
+      </if>
+      <if test="valueId != null" >
+        valueId,
+      </if>
+      <if test="valueName != null" >
+        valueName,
+      </if>
+      <if test="createdBy != null" >
+        createdBy,
+      </if>
+      <if test="creationDate != null" >
+        creationDate,
+      </if>
+      <if test="modifyBy != null" >
+        modifyBy,
+      </if>
+      <if test="modifyDate != null" >
+        modifyDate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="typeCode != null" >
+        #{typeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="typeName != null" >
+        #{typeName,jdbcType=VARCHAR},
+      </if>
+      <if test="valueId != null" >
+        #{valueId,jdbcType=BIGINT},
+      </if>
+      <if test="valueName != null" >
+        #{valueName,jdbcType=VARCHAR},
+      </if>
+      <if test="createdBy != null" >
+        #{createdBy,jdbcType=BIGINT},
+      </if>
+      <if test="creationDate != null" >
+        #{creationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyBy != null" >
+        #{modifyBy,jdbcType=BIGINT},
+      </if>
+      <if test="modifyDate != null" >
+        #{modifyDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.appsys.pojo.data_dictionary" >
+    update data_dictionary
+    <set >
+      <if test="typeCode != null" >
+        typeCode = #{typeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="typeName != null" >
+        typeName = #{typeName,jdbcType=VARCHAR},
+      </if>
+      <if test="valueId != null" >
+        valueId = #{valueId,jdbcType=BIGINT},
+      </if>
+      <if test="valueName != null" >
+        valueName = #{valueName,jdbcType=VARCHAR},
+      </if>
+      <if test="createdBy != null" >
+        createdBy = #{createdBy,jdbcType=BIGINT},
+      </if>
+      <if test="creationDate != null" >
+        creationDate = #{creationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyBy != null" >
+        modifyBy = #{modifyBy,jdbcType=BIGINT},
+      </if>
+      <if test="modifyDate != null" >
+        modifyDate = #{modifyDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.appsys.pojo.data_dictionary" >
+    update data_dictionary
+    set typeCode = #{typeCode,jdbcType=VARCHAR},
+      typeName = #{typeName,jdbcType=VARCHAR},
+      valueId = #{valueId,jdbcType=BIGINT},
+      valueName = #{valueName,jdbcType=VARCHAR},
+      createdBy = #{createdBy,jdbcType=BIGINT},
+      creationDate = #{creationDate,jdbcType=TIMESTAMP},
+      modifyBy = #{modifyBy,jdbcType=BIGINT},
+      modifyDate = #{modifyDate,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="findpt" resultType="data_dictionary">
+        select * from data_dictionary where typeCode=#{typeCode} 
+  </select>
+  
+ 
+</mapper>

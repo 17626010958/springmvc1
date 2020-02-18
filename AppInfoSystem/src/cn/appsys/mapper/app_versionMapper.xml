@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.appsys.dao.app_versionMapper" >
+  <resultMap id="BaseResultMap" type="cn.appsys.pojo.app_version" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="appId" property="appId" jdbcType="BIGINT" />
+    <result column="versionNo" property="versionNo" jdbcType="VARCHAR" />
+    <result column="versionInfo" property="versionInfo" jdbcType="VARCHAR" />
+    <result column="publishStatus" property="publishStatus" jdbcType="BIGINT" />
+    <result column="downloadLink" property="downloadLink" jdbcType="VARCHAR" />
+    <result column="versionSize" property="versionSize" jdbcType="DECIMAL" />
+    <result column="createdBy" property="createdBy" jdbcType="BIGINT" />
+    <result column="creationDate" property="creationDate" jdbcType="TIMESTAMP" />
+    <result column="modifyBy" property="modifyBy" jdbcType="BIGINT" />
+    <result column="modifyDate" property="modifyDate" jdbcType="TIMESTAMP" />
+    <result column="apkLocPath" property="apkLocPath" jdbcType="VARCHAR" />
+    <result column="apkFileName" property="apkFileName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, appId, versionNo, versionInfo, publishStatus, downloadLink, versionSize, createdBy, 
+    creationDate, modifyBy, modifyDate, apkLocPath, apkFileName
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from app_version
+    where id = #{id,jdbcType=BIGINT} 
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from app_version
+    where appId = #{id}
+  </delete>
+  <insert id="insert" parameterType="cn.appsys.pojo.app_version" >
+    insert into app_version (id, appId, versionNo, 
+      versionInfo, publishStatus, downloadLink, 
+      versionSize, createdBy, creationDate, 
+      modifyBy, modifyDate, apkLocPath, 
+      apkFileName)
+    values (#{id,jdbcType=BIGINT}, #{appId,jdbcType=BIGINT}, #{versionNo,jdbcType=VARCHAR}, 
+      #{versionInfo,jdbcType=VARCHAR}, #{publishStatus,jdbcType=BIGINT}, #{downloadLink,jdbcType=VARCHAR}, 
+      #{versionSize,jdbcType=DECIMAL}, #{createdBy,jdbcType=BIGINT}, #{creationDate,jdbcType=TIMESTAMP}, 
+      #{modifyBy,jdbcType=BIGINT}, #{modifyDate,jdbcType=TIMESTAMP}, #{apkLocPath,jdbcType=VARCHAR}, 
+      #{apkFileName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.appsys.pojo.app_version" >
+    insert into app_version
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="appId != null" >
+        appId,
+      </if>
+      <if test="versionNo != null" >
+        versionNo,
+      </if>
+      <if test="versionInfo != null" >
+        versionInfo,
+      </if>
+      <if test="publishStatus != null" >
+        publishStatus,
+      </if>
+      <if test="downloadLink != null" >
+        downloadLink,
+      </if>
+      <if test="versionSize != null" >
+        versionSize,
+      </if>
+      <if test="createdBy != null" >
+        createdBy,
+      </if>
+      <if test="creationDate != null" >
+        creationDate,
+      </if>
+      <if test="modifyBy != null" >
+        modifyBy,
+      </if>
+      <if test="modifyDate != null" >
+        modifyDate,
+      </if>
+      <if test="apkLocPath != null" >
+        apkLocPath,
+      </if>
+      <if test="apkFileName != null" >
+        apkFileName,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="appId != null" >
+        #{appId,jdbcType=BIGINT},
+      </if>
+      <if test="versionNo != null" >
+        #{versionNo,jdbcType=VARCHAR},
+      </if>
+      <if test="versionInfo != null" >
+        #{versionInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="publishStatus != null" >
+        #{publishStatus,jdbcType=BIGINT},
+      </if>
+      <if test="downloadLink != null" >
+        #{downloadLink,jdbcType=VARCHAR},
+      </if>
+      <if test="versionSize != null" >
+        #{versionSize,jdbcType=DECIMAL},
+      </if>
+      <if test="createdBy != null" >
+        #{createdBy,jdbcType=BIGINT},
+      </if>
+      <if test="creationDate != null" >
+        #{creationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyBy != null" >
+        #{modifyBy,jdbcType=BIGINT},
+      </if>
+      <if test="modifyDate != null" >
+        #{modifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="apkLocPath != null" >
+        #{apkLocPath,jdbcType=VARCHAR},
+      </if>
+      <if test="apkFileName != null" >
+        #{apkFileName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.appsys.pojo.app_version" >
+    update app_version
+    <set >
+      <if test="appId != null" >
+        appId = #{appId,jdbcType=BIGINT},
+      </if>
+      <if test="versionNo != null" >
+        versionNo = #{versionNo,jdbcType=VARCHAR},
+      </if>
+      <if test="versionInfo != null" >
+        versionInfo = #{versionInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="publishStatus != null" >
+        publishStatus = #{publishStatus,jdbcType=BIGINT},
+      </if>
+      <if test="downloadLink != null" >
+        downloadLink = #{downloadLink,jdbcType=VARCHAR},
+      </if>
+      <if test="versionSize != null" >
+        versionSize = #{versionSize,jdbcType=DECIMAL},
+      </if>
+      <if test="createdBy != null" >
+        createdBy = #{createdBy,jdbcType=BIGINT},
+      </if>
+      <if test="creationDate != null" >
+        creationDate = #{creationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyBy != null" >
+        modifyBy = #{modifyBy,jdbcType=BIGINT},
+      </if>
+      <if test="modifyDate != null" >
+        modifyDate = #{modifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="apkLocPath != null" >
+        apkLocPath = #{apkLocPath,jdbcType=VARCHAR},
+      </if>
+      <if test="apkFileName != null" >
+        apkFileName = #{apkFileName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.appsys.pojo.app_version" >
+    update app_version
+    set appId = #{appId,jdbcType=BIGINT},
+      versionNo = #{versionNo,jdbcType=VARCHAR},
+      versionInfo = #{versionInfo,jdbcType=VARCHAR},
+      publishStatus = #{publishStatus,jdbcType=BIGINT},
+      downloadLink = #{downloadLink,jdbcType=VARCHAR},
+      versionSize = #{versionSize,jdbcType=DECIMAL},
+      createdBy = #{createdBy,jdbcType=BIGINT},
+      creationDate = #{creationDate,jdbcType=TIMESTAMP},
+      modifyBy = #{modifyBy,jdbcType=BIGINT},
+      modifyDate = #{modifyDate,jdbcType=TIMESTAMP},
+      apkLocPath = #{apkLocPath,jdbcType=VARCHAR},
+      apkFileName = #{apkFileName,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+   <select id="findver" resultType="app_version">
+    select * from app_version
+     where  appId=#{appId}  ORDER BY versionNo DESC LIMIT 0,1
+   </select>  
+  <update id="updateapk">
+   update  app_version  set downloadLink=null WHERE id=#{id}
+  </update>
+ <update id="updatebb">
+ UPDATE app_info SET versionId=(SELECT id FROM app_version 
+ WHERE versionNo=#{versionNo} AND appId=#{appId}) WHERE id=#{appId}
+ </update>
+</mapper>

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.appsys.dao.ad_promotionMapper" >
+  <resultMap id="BaseResultMap" type="cn.appsys.pojo.ad_promotion" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="appId" property="appId" jdbcType="BIGINT" />
+    <result column="adPicPath" property="adPicPath" jdbcType="VARCHAR" />
+    <result column="adPV" property="adPV" jdbcType="BIGINT" />
+    <result column="carouselPosition" property="carouselPosition" jdbcType="INTEGER" />
+    <result column="startTime" property="startTime" jdbcType="TIMESTAMP" />
+    <result column="endTime" property="endTime" jdbcType="TIMESTAMP" />
+    <result column="createdBy" property="createdBy" jdbcType="BIGINT" />
+    <result column="creationDate" property="creationDate" jdbcType="TIMESTAMP" />
+    <result column="modifyBy" property="modifyBy" jdbcType="BIGINT" />
+    <result column="modifyDate" property="modifyDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, appId, adPicPath, adPV, carouselPosition, startTime, endTime, createdBy, creationDate, 
+    modifyBy, modifyDate
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from ad_promotion
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from ad_promotion
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="cn.appsys.pojo.ad_promotion" >
+    insert into ad_promotion (id, appId, adPicPath, 
+      adPV, carouselPosition, startTime, 
+      endTime, createdBy, creationDate, 
+      modifyBy, modifyDate)
+    values (#{id,jdbcType=BIGINT}, #{appId,jdbcType=BIGINT}, #{adPicPath,jdbcType=VARCHAR}, 
+      #{adPV,jdbcType=BIGINT}, #{carouselPosition,jdbcType=INTEGER}, #{startTime,jdbcType=TIMESTAMP}, 
+      #{endTime,jdbcType=TIMESTAMP}, #{createdBy,jdbcType=BIGINT}, #{creationDate,jdbcType=TIMESTAMP}, 
+      #{modifyBy,jdbcType=BIGINT}, #{modifyDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.appsys.pojo.ad_promotion" >
+    insert into ad_promotion
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="appId != null" >
+        appId,
+      </if>
+      <if test="adPicPath != null" >
+        adPicPath,
+      </if>
+      <if test="adPV != null" >
+        adPV,
+      </if>
+      <if test="carouselPosition != null" >
+        carouselPosition,
+      </if>
+      <if test="startTime != null" >
+        startTime,
+      </if>
+      <if test="endTime != null" >
+        endTime,
+      </if>
+      <if test="createdBy != null" >
+        createdBy,
+      </if>
+      <if test="creationDate != null" >
+        creationDate,
+      </if>
+      <if test="modifyBy != null" >
+        modifyBy,
+      </if>
+      <if test="modifyDate != null" >
+        modifyDate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="appId != null" >
+        #{appId,jdbcType=BIGINT},
+      </if>
+      <if test="adPicPath != null" >
+        #{adPicPath,jdbcType=VARCHAR},
+      </if>
+      <if test="adPV != null" >
+        #{adPV,jdbcType=BIGINT},
+      </if>
+      <if test="carouselPosition != null" >
+        #{carouselPosition,jdbcType=INTEGER},
+      </if>
+      <if test="startTime != null" >
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null" >
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null" >
+        #{createdBy,jdbcType=BIGINT},
+      </if>
+      <if test="creationDate != null" >
+        #{creationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyBy != null" >
+        #{modifyBy,jdbcType=BIGINT},
+      </if>
+      <if test="modifyDate != null" >
+        #{modifyDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.appsys.pojo.ad_promotion" >
+    update ad_promotion
+    <set >
+      <if test="appId != null" >
+        appId = #{appId,jdbcType=BIGINT},
+      </if>
+      <if test="adPicPath != null" >
+        adPicPath = #{adPicPath,jdbcType=VARCHAR},
+      </if>
+      <if test="adPV != null" >
+        adPV = #{adPV,jdbcType=BIGINT},
+      </if>
+      <if test="carouselPosition != null" >
+        carouselPosition = #{carouselPosition,jdbcType=INTEGER},
+      </if>
+      <if test="startTime != null" >
+        startTime = #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null" >
+        endTime = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null" >
+        createdBy = #{createdBy,jdbcType=BIGINT},
+      </if>
+      <if test="creationDate != null" >
+        creationDate = #{creationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyBy != null" >
+        modifyBy = #{modifyBy,jdbcType=BIGINT},
+      </if>
+      <if test="modifyDate != null" >
+        modifyDate = #{modifyDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.appsys.pojo.ad_promotion" >
+    update ad_promotion
+    set appId = #{appId,jdbcType=BIGINT},
+      adPicPath = #{adPicPath,jdbcType=VARCHAR},
+      adPV = #{adPV,jdbcType=BIGINT},
+      carouselPosition = #{carouselPosition,jdbcType=INTEGER},
+      startTime = #{startTime,jdbcType=TIMESTAMP},
+      endTime = #{endTime,jdbcType=TIMESTAMP},
+      createdBy = #{createdBy,jdbcType=BIGINT},
+      creationDate = #{creationDate,jdbcType=TIMESTAMP},
+      modifyBy = #{modifyBy,jdbcType=BIGINT},
+      modifyDate = #{modifyDate,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
