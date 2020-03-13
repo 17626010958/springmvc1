@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:mvc="http://www.springframework.org/schema/mvc"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:tx="http://www.springframework.org/schema/tx"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+	   		http://www.springframework.org/schema/beans/spring-beans.xsd
+	   		http://www.springframework.org/schema/context
+	   		http://www.springframework.org/schema/context/spring-context.xsd
+	   		http://www.springframework.org/schema/mvc
+	   		http://www.springframework.org/schema/mvc/spring-mvc.xsd
+	   		http://www.springframework.org/schema/tx
+	   		http://www.springframework.org/schema/tx/spring-tx.xsd">
+		
+	<!-- 扫描指定的类，IOC注解加载 ，实例化对象-->
+	 <context:component-scan base-package="com.lpp"></context:component-scan>
+	 
+	<!-- 启用MVC的注解模式 ，为Controller控制器服务的，通过注解简化对控制器的开发-->
+	<mvc:annotation-driven>
+		<mvc:message-converters>
+			<bean class="org.springframework.http.converter.StringHttpMessageConverter">
+				<property name="supportedMediaTypes">
+					<list>
+						<value>text/html;charset=utf-8</value>
+					</list>
+				</property>
+			</bean>
+		</mvc:message-converters>
+	</mvc:annotation-driven>
+	
+	<!-- 将图片，JS，CSS等静态资源排除在外 -->
+	<mvc:default-servlet-handler/>
+	
+	
+</beans>
